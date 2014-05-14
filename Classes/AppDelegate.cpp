@@ -1,5 +1,5 @@
 #include "AppDelegate.h"
-#include "HelloWorldScene.h"
+#include "PreGameScene.h"
 
 USING_NS_CC;
 
@@ -18,14 +18,19 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     director->setOpenGLView(eglView);
 	
+    
+    //set the resolution
+    auto designResolution = Size(540, 960);
+    EGLView::getInstance()->setDesignResolutionSize(designResolution.width, designResolution.height, ResolutionPolicy::NO_BORDER);
+    
     // turn on display FPS
-    director->setDisplayStats(true);
+//    director->setDisplayStats(true);
 
     // set FPS. the default value is 1.0/60 if you don't call this
     director->setAnimationInterval(1.0 / 60);
 
     // create a scene. it's an autorelease object
-    auto scene = HelloWorld::createScene();
+    auto scene = PreGameScene::create();
 
     // run
     director->runWithScene(scene);
