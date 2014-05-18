@@ -21,9 +21,14 @@ public:
     CREATE_FUNC(GameLayer);
     virtual bool init();
     void update(float dt);
-    
+    void setCurrentDigit (int digit);
+    void showTutorialLayer();
+    void showRollingNumberLayer();
+    void initAppearance();
+    void startGame();
+    void updateClock(float dt);
 private:
-
+    int _currentDigit;
 };
 
 #endif /* defined(__DigitMaster__GameLayer__) */

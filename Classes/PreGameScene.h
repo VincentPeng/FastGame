@@ -19,7 +19,6 @@ private:
     
     
 public:
-    
     PreGameScene();
     ~PreGameScene();
     virtual bool init();

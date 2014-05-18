@@ -11,6 +11,7 @@
 
 #include "cocos2d.h"
 #include "GameLayer.h"
+#include "TutorialLayer.h"
 
 class MainGameScene : public cocos2d::Scene
 {
@@ -22,7 +23,7 @@ public:
     ~MainGameScene();
     virtual bool init();
     CREATE_FUNC(MainGameScene);
-    
+    void showTutorialLayer();
     CC_SYNTHESIZE(GameLayer*, _gameLayer, GameLayer);
 };
 

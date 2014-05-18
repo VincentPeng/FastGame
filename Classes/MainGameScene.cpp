@@ -16,15 +16,20 @@ MainGameScene::MainGameScene()
 MainGameScene::~MainGameScene()
 {}
 
+
+
 bool MainGameScene::init() {
     bool ret = false;
     CCLOG("MainGameScene::init");
     do {
         CC_BREAK_IF(!Scene::init());
-        
         _gameLayer = GameLayer::create();
-        this->addChild(_gameLayer, 1);
+//        _gameLayer->setPosition(Point(0,0));
+        this->addChild(_gameLayer);
+       
         ret = true;
     } while(0);
     return ret;
 }
+
+
