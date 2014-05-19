@@ -25,7 +25,8 @@ bool MainGameScene::init() {
         CC_BREAK_IF(!Scene::init());
         _gameLayer = GameLayer::create();
 //        _gameLayer->setPosition(Point(0,0));
-        this->addChild(_gameLayer);
+        TimeModeLayer* timeLayer = TimeModeLayer::create();
+        this->addChild(timeLayer);
        
         ret = true;
     } while(0);

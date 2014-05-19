@@ -11,7 +11,7 @@
 
 #include "cocos2d.h"
 #include "GameLayer.h"
-#include "TutorialLayer.h"
+#include "TimeModeLayer.h"
 
 class MainGameScene : public cocos2d::Scene
 {

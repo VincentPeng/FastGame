@@ -18,7 +18,7 @@ GameLayer::~GameLayer() {
     
 }
 
-bool passOrNot (int digit, int number)
+bool GameLayer::passOrNot (int digit, int number)
 {
     if (number % digit == 0)
         return false;
@@ -33,21 +33,20 @@ bool passOrNot (int digit, int number)
 
 void GameLayer::initAppearance()
 {
-    Sprite* bgSprite = Sprite::create("bg.png");
     
-//    bgSprite->setContentSize(Size(40, 60));
-    bgSprite->setPosition(Point(270, 480));
-//    bgSprite->setColor(Color3B(250, 248, 239));
-    this->addChild(bgSprite);
-    Sprite* scoreSprite = Sprite::create("scorebg.png");
-    scoreSprite->setPosition(Point(300,800));
-    bgSprite->addChild(scoreSprite);
+}
+
+void GameLayer::startGame()
+{
     
-    Sprite* bestSprite = Sprite::create("bestbg.png");
-    bestSprite->setPosition(Point(450,800));
-    bgSprite->addChild(bestSprite);
-    
-    
+}
+
+int GameLayer::generateRandomDigit()
+{
+    int ret = 0;
+    while (ret == 0 || ret == 5 || ret == 2 || ret == 1)
+        ret = _rd() % 200;
+    return ret;
 }
 
 bool GameLayer::init() {
@@ -55,7 +54,10 @@ bool GameLayer::init() {
     do {
         CC_BREAK_IF(!Layer::init());
         
-        
+        for (int i = 0;i < 100;i++)
+        {
+            cout<<generateRandomDigit()<<endl;
+        }
         this->initAppearance();
         bool isFirst = UserDefault::getInstance()->getBoolForKey("ISFIRSTTIME");
         if (isFirst) {
@@ -67,6 +69,8 @@ bool GameLayer::init() {
             this->showRollingNumberLayer();
         }
         ret = true;
+        
+        
     } while (0);
     return ret;
 }
@@ -95,17 +99,18 @@ void GameLayer::setCurrentDigit(int digit)
     _currentDigit = digit;
 }
 
-void GameLayer::startGame()
+int GameLayer::getCurrentDigit()
 {
-    this->schedule(schedule_selector(GameLayer::updateClock), 1.0f);
+    return _currentDigit;
 }
 
-void GameLayer::updateClock(float dt)
+void GameLayer::setCurrentNumber(int number)
 {
-    
+    _currentNumber = number;
 }
 
-void GameLayer::update(float dt)
+int GameLayer::getCurrentNumber()
 {
-//    CCLOG("updating...");
+    return _currentNumber;
 }
+

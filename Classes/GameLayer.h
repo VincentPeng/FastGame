@@ -10,8 +10,11 @@
 #define __DigitMaster__GameLayer__
 
 #include "cocos2d.h"
+#include <iostream>
+#include <random>
 
 USING_NS_CC;
+using namespace std;
 
 class GameLayer: public cocos2d::Layer
 {
@@ -20,15 +23,20 @@ public:
     ~GameLayer();
     CREATE_FUNC(GameLayer);
     virtual bool init();
-    void update(float dt);
     void setCurrentDigit (int digit);
+    void setCurrentNumber (int number);
+    int getCurrentDigit ();
+    int getCurrentNumber ();
     void showTutorialLayer();
     void showRollingNumberLayer();
-    void initAppearance();
-    void startGame();
-    void updateClock(float dt);
+    virtual void initAppearance();
+    virtual void startGame() ;
+    bool passOrNot (int digit, int number);
+    int generateRandomDigit();
 private:
     int _currentDigit;
+    int _currentNumber;
+    random_device _rd;
 };
 
 #endif /* defined(__DigitMaster__GameLayer__) */

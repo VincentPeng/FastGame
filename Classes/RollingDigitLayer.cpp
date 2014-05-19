@@ -51,5 +51,6 @@ void RollingDigitLayer::startPressed(cocos2d::Object *pObject)
     {
         _parentGameLayer->removeChildByTag(RollingDigitLayerTag);
     }
+    _parentGameLayer->startGame();
 }
 
